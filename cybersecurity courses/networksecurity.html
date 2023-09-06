@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Page - E-Learning Platform</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #fbc37e;
+            color: #ff3434;
+            padding: 10px;
+            border-radius: 3px;
+            border-color: orangered;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+
+        .dropdown-container {
+            display: flex;
+        }
+
+        .dropdown {
+            position: relative;
+            margin-right: 20px;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #ff6f6f;
+            min-width: 160px;
+            box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .dropdown-content li {
+            padding: 8px 16px;
+        }
+
+        .dropdown-content a {
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #9ac9fb;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* Main content styles */
+        .dashboard {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        /* Sidebar styles */
+        .sidebar {
+            background-color: #f8f9fa;
+            padding: 10px;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar li {
+            margin-bottom: 10px;
+        }
+
+        .sidebar a {
+            text-decoration: none;
+            color: #333;
+            display: block;
+            padding: 5px;
+            border-radius: 5px;
+        }
+
+        .sidebar a:hover {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        .logo a {
+            font-size: 24px;
+            color: #110201;
+            text-decoration: none;
+        }
+
+        .search-bar {
+            display: flex;
+            align-items: center;
+        }
+
+        .search-bar input {
+            padding: 8px;
+            border: none;
+            border-radius: 4px;
+        }
+
+        .search-bar button {
+            padding: 8px;
+            background-color: #fe3232;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            margin-left: 5px;
+            cursor: pointer;
+        }
+
+
+        .nav-links li a {
+            color: #0f0000;
+            text-decoration: none;
+        }
+
+
+        .nav-links ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+            align-items: center;
+        }
+
+        .nav-links li {
+            margin-right: 20px;
+        }
+
+        .nav-links li a i {
+            font-size: 20px;
+        }
+
+
+        .nav-links li:last-child {
+            margin-right: 0;
+            margin-left: auto;
+        }
+
+        body,
+        h1,
+        h2,
+        h3,
+        p,
+        ul,
+        li,
+        video {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #fecfcf;
+        }
+
+
+        main {
+            max-width: 2200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: beige;
+        }
+
+        .course-banner {
+            text-align: center;
+            margin-bottom: 20px;
+            background-color: #c9d3f9;
+            padding: 20px;
+            border-radius: 5px;
+            filter: drop-shadow(10px 10px rgb(255, 148, 109));
+        }
+
+        .course-banner h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .course-banner p {
+            color: #777;
+            font-size: 18px;
+        }
+
+        .video-section {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            border-radius: 5px;
+        }
+
+        video {
+            max-width: 1001px;
+            max-height: 500px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            filter: brightness(95%) contrast(95%) saturate(100%);
+        }
+
+        .star-ratings {
+            text-align: center;
+        }
+
+        .rating {
+            display: inline-block;
+            font-size: 30px;
+
+        }
+
+        .rating input {
+            display: none;
+        }
+
+        .rating label {
+            cursor: pointer;
+        }
+
+        .rating label:before {
+            content: "\2606";
+        }
+
+        .rating input:checked~label:before {
+            content: "\2605";
+            color: gold;
+        }
+
+        .submit-rating {
+            margin-top: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .comment-section {
+            margin-top: 30px;
+            max-width: 500px;
+            margin-left: 40px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: lightblue;
+        }
+
+        .comment-form input,
+        .comment-form textarea {
+            display: block;
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .submit-comment {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .course-nav-bar {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+            background-color: navajowhite;
+            padding: 20px;
+            border-radius: 5px;
+
+        }
+
+        .course-nav-bar ul {
+            list-style: none;
+            display: flex;
+        }
+
+        .course-nav-bar li {
+            margin-right: 20px;
+        }
+
+        .course-nav-bar a {
+            text-decoration: none;
+            color: #333;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .course-nav-bar a:hover {
+            background-color: #c9d3f9;
+            border-color: #bbb;
+            transform: scale(3.05);
+        }
+
+        .course-content,
+        .course-overview,
+        .course-notes,
+        .course-ratings,
+        .course-faqs {
+            margin-bottom: 30px;
+        }
+
+        .course-content h2,
+        .course-overview h2,
+        .course-notes h2,
+        .course-ratings h2,
+        .course-faqs h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .course-content details,
+        .course-overview p,
+        .course-notes a,
+        .course-ratings p,
+        .course-faqs details {
+            margin-left: 20px;
+            padding: 5px;
+        }
+
+        .course-content details,
+        .course-faqs details {
+            margin-left: 20px;
+            padding: 5px;
+        }
+
+        .course-content summary,
+        .course-faqs summary {
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .course-content {
+            padding: 20px;
+            border-radius: 5px;
+        }
+
+        .course-content p {
+            margin: 10px 0;
+        }
+
+        .course-content details[open] summary,
+        .course-faqs details[open] summary {
+            background-color: #f0f0f0;
+        }
+
+        .course-overview p {
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+
+
+        .course-overview {
+            background-color: navajowhite;
+            padding: 20px;
+            border-radius: 5px;
+        }
+
+        .course-notes {
+            background-color: navajowhite;
+            padding: 20px;
+            border-radius: 5px;
+        }
+
+        .course-notes a {
+            display: inline-block;
+            margin-bottom: 10px;
+            padding: 8px 15px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .course-notes a:hover {
+            background-color: #0056b3;
+        }
+
+        .course-ratings {
+            background-color: navajowhite;
+            padding: 20px;
+            border-radius: 5px;
+        }
+
+        .course-ratings p {
+            font-size: 18px;
+            color: #333;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .course-faqs {
+            background-color: navajowhite;
+            padding: 20px;
+            border-radius: 5px;
+        }
+
+        .course-faqs details {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .course-faqs summary {
+            font-weight: bold;
+        }
+
+        .footer {
+            background-color: #f0a050;
+            padding: 40px;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 30px;
+            border-radius: 5px;
+        }
+
+        .footer h3 {
+            color: #030000;
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        .contact-us label {
+            font-weight: bold;
+            color: #1a0000;
+        }
+
+        .contact-us textarea {
+            resize: vertical;
+        }
+
+        .pages ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .pages li {
+            margin-bottom: 10px;
+        }
+
+        .pages a {
+            color: #000000;
+            text-decoration: none;
+        }
+
+        .pages a:hover {
+            text-decoration: underline;
+            color: yellow;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+
+        .contact-icons {
+            list-style: none;
+            padding: 0;
+        }
+
+        .contact-icons li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+
+        .contact-icons i {
+            margin-right: 10px;
+            color: #250202;
+        }
+
+        .social-icons {
+            display: flex;
+            list-style: none;
+            padding: 0;
+        }
+
+        .social-icons li {
+            margin-right: 10px;
+        }
+
+        .social-icons a {
+            color: #110101;
+            font-size: 24px;
+            text-decoration: none;
+        }
+
+        .social-icons a:hover {
+            color: #ffd700;
+        }
+
+        /* Additional styles for copyright text */
+        .footer .copyright {
+            text-align: center;
+            grid-column: span 3;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #1e0202;
+        }
+
+        .quiz-section {
+    background-color: #f5f5f5;
+    padding: 20px;
+    border-radius: 5px;
+    margin-bottom: 30px;
+}
+
+.quiz-form {
+    margin-top: 20px;
+}
+
+.quiz-question {
+    margin-bottom: 15px;
+}
+
+.quiz-question p {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.quiz-question label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: normal;
+}
+
+.quiz-question input[type="radio"] {
+    margin-right: 5px;
+}
+
+button[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+        /* Media query for smaller screens */
+        @media screen and (max-width: 768px) {
+            .footer {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .contact-info {
+                align-items: center;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="dropdown-container">
+                <div class="dropdown">
+                    <a href="#" class="dropbtn"><i class="fas fa-bars"></i> </a>
+                    <div class="dropdown-content">
+                        <ul>
+                            <li><a href="../categories.html">Categories</a></li>
+                            <li><a href="#">Courses</a></li>
+                            <li><a href="../dashboard.html">Dashboard</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="logo">
+                <a href="index.html">Let's Learn</a>
+            </div>
+            <div class="search-bar">
+                <input type="text" placeholder="Search...">
+                <button type="submit">Search</button>
+            </div>
+            <div class="nav-links">
+                <ul>
+                    <li><a href="login.html">Login</a></li>
+                    <li><a href="signup.html">Signup</a></li>
+                    <li><a href="profile.html" class="usericon"><i class="fas fa-user"></i> </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="course-banner">
+            <h1>Network Security</h1>
+            <p>Instructor: Security Expert</p>
+        </section>
+    
+       
+        <section class="video-section">
+            <video width="800" controls>
+                <source src="network_security.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </section>
+    
+        <section class="star-ratings">
+            <h2>Course Ratings</h2>
+            <div class="rating">
+                <input type="radio" id="star5" name="rating" value="1">
+                <label for="star5" title="5 stars"></label>
+                <input type="radio" id="star4" name="rating" value="2">
+                <label for="star4" title="4 stars"></label>
+                <input type="radio" id="star3" name="rating" value="3">
+                <label for="star3" title="3 stars"></label>
+                <input type="radio" id="star2" name="rating" value="4">
+                <label for="star2" title="2 stars"></label>
+                <input type="radio" id="star1" name="rating" value="5">
+                <label for="star1" title="1 star"></label>
+            </div>
+            <button class="submit-rating">Submit Rating</button>
+        </section>
+        
+        
+        
+        
+        <section class="course-nav-bar">
+            <ul>
+                <li><a href="#course-content">Content</a></li>
+                <li><a href="#course-overview">Overview</a></li>
+                <li><a href="#course-notes">Notes</a></li>
+                <li><a href="#course-ratings">Ratings</a></li>
+                <li><a href="#course-faqs">FAQs</a></li>
+                <li><a href="#quiz-section">Quiz</a></li>
+            </ul>
+        </section>
+
+        <section class="course-content" id="course-content">
+            <h2>Course Content</h2>
+    
+            <details>
+                <summary>Introduction to Network Security</summary>
+                <p>Video Time: (00:00:00)</p>
+            </details>
+    
+            <details>
+                <summary>Types of Network Attacks</summary>
+                <p>Video Time: (00:12:30)</p>
+            </details>
+    
+            <details>
+                <summary>Firewalls and Intrusion Detection Systems</summary>
+                <p>Video Time: (00:30:45)</p>
+            </details>
+    
+            <details>
+                <summary>Virtual Private Networks (VPNs)</summary>
+                <p>Video Time: (00:45:20)</p>
+            </details>
+    
+            <details>
+                <summary>Wireless Network Security</summary>
+                <p>Video Time: (01:00:00)</p>
+            </details>
+    
+            <details>
+                <summary>Network Security Best Practices</summary>
+                <p>Video Time: (01:15:15)</p>
+            </details>
+    
+            <details>
+                <summary>Security of Cloud Networks</summary>
+                <p>Video Time: (01:30:20)</p>
+            </details>
+    
+            <details>
+                <summary>Network Incident Response</summary>
+                <p>Video Time: (01:45:30)</p>
+            </details>
+        </section>
+    
+        
+        <section class="course-overview" id="course-overview">
+            <h2>Course Overview</h2>
+            <p>
+                The Network Security course focuses on essential concepts and tools to secure computer networks from
+                unauthorized access and data breaches. In this course, you will learn about network security protocols,
+                types of attacks, and the role of firewalls and intrusion detection systems in safeguarding networks. You
+                will also explore Virtual Private Networks (VPNs) and their role in securing communication over public
+                networks. The course covers wireless network security, best practices for network protection, and security
+                considerations in cloud-based networks. Additionally, you will gain knowledge about incident response to
+                effectively handle network security breaches. By the end of this course, you will have the skills to design,
+                implement, and manage secure network infrastructures for organizations.
+            </p>
+        </section>
+    
+       
+        <section class="course-notes" id="course-notes">
+            <h2>Course Notes</h2>
+            <a href="D:\vintern E-learning\NetworkSecurityNotesForProfessionals.pdf" target="_blank">Course Notes PDF</a>
+        </section>
+    
+        
+        <section class="course-faqs" id="course-faqs">
+            <h2>Frequently Asked Questions</h2>
+            <details>
+                <summary>Is this course suitable for beginners in networking?</summary>
+                <p>Yes, this course is designed for both beginners and professionals looking to enhance their knowledge of
+                    network security.</p>
+            </details>
+    
+            <details>
+                <summary>What are the prerequisites for enrolling in this course?</summary>
+                <p>Basic understanding of networking concepts is beneficial but not mandatory to enroll in this course.</p>
+            </details>
+    
+            <details>
+                <summary>What are the career prospects after completing this course?</summary>
+                <p>Network Security professionals are in demand across various industries, including IT, finance,
+                    government,
+                    and more.</p>
+            </details>      
+        </section>
+
+       
+        <section class="quiz-section" id="quiz-section">
+            <h2>Quiz</h2>
+            <form class="quiz-form" action="#">
+                <div class="quiz-question">
+                    <p>Question 1: What is the primary goal of network security?</p>
+                    <label>
+                        <input type="radio" name="q1" value="a"> A. To slow down network traffic
+                    </label>
+                    <label>
+                        <input type="radio" name="q1" value="b"> B. To monitor user activity
+                    </label>
+                    <label>
+                        <input type="radio" name="q1" value="c"> C. To protect network resources and data
+                    </label>
+                    <label>
+                        <input type="radio" name="q1" value="d"> D. To increase network speed
+                    </label>
+                </div>
+                <div class="quiz-question">
+                    <p>Question 2: What is a "firewall" in the context of network security?</p>
+                    <label>
+                        <input type="radio" name="q2" value="a"> A. A physical barrier around network devices
+                    </label>
+                    <label>
+                        <input type="radio" name="q2" value="b"> B. A device that blocks all incoming traffic
+                    </label>
+                    <label>
+                        <input type="radio" name="q2" value="c"> C. A security mechanism that filters network traffic
+                    </label>
+                    <label>
+                        <input type="radio" name="q2" value="d"> D. A tool for increasing network bandwidth
+                    </label>
+                </div>
+                <div class="quiz-question">
+                    <p>Question 3: What is the purpose of encryption in network security?</p>
+                    <label>
+                        <input type="radio" name="q3" value="a"> A. To slow down data transmission
+                    </label>
+                    <label>
+                        <input type="radio" name="q3" value="b"> B. To prevent network attacks
+                    </label>
+                    <label>
+                        <input type="radio" name="q3" value="c"> C. To convert data into a secure format
+                    </label>
+                    <label>
+                        <input type="radio" name="q3" value="d"> D. To increase network latency
+                    </label>
+                </div>
+                <div class="quiz-question">
+                    <p>Question 4: What is the "DMZ" (Demilitarized Zone) in network security?</p>
+                    <label>
+                        <input type="radio" name="q4" value="a"> A. A highly secure area of a network
+                    </label>
+                    <label>
+                        <input type="radio" name="q4" value="b"> B. A place for network administrators to relax
+                    </label>
+                    <label>
+                        <input type="radio" name="q4" value="c"> C. A zone with no network activity
+                    </label>
+                    <label>
+                        <input type="radio" name="q4" value="d"> D. A neutral area between the internal network and the internet
+                    </label>
+                </div>
+                <div class="quiz-question">
+                    <p>Question 5: What is a "DDoS attack"?</p>
+                    <label>
+                        <input type="radio" name="q5" value="a"> A. A data decryption technique
+                    </label>
+                    <label>
+                        <input type="radio" name="q5" value="b"> B. A type of firewall
+                    </label>
+                    <label>
+                        <input type="radio" name="q5" value="c"> C. A technique for securing passwords
+                    </label>
+                    <label>
+                        <input type="radio" name="q5" value="d"> D. A malicious attempt to disrupt a network by overwhelming it
+                        with a flood of traffic
+                    </label>
+                </div>
+                <button type="submit">Submit Answers</button>
+            </form>
+        </section>
+
+
+        <section class="comment-section">
+            <h2>Comments</h2>
+            <div class="comment-form">
+                <input type="text" placeholder="Name">
+                <textarea placeholder="Your comment"></textarea>
+                <button class="submit-comment">Submit Comment</button>
+            </div>
+            <div class="comments-list">
+            </div>
+        </section>
+    </main>
+
+
+    <footer class="footer">
+
+        <div class="pages">
+            <h3>Pages</h3>
+            <ul>
+                <li><a href="#">Terms and Conditions</a></li>
+                <li><a href="#">About us</a></li>
+                <li><a href="#">Categories</a></li>
+                <li><a href="#">Courses</a></li>
+                <li><a href="#">grievance</a></li>                                       
+            </ul>
+        </div>
+        <div class="contact-info">
+            <h2>Let's Learn</h3>
+                <ul class="contact-icons">
+                    <li><i class="fas fa-phone"></i> Phone: 8309139699</li>
+                    <li><i class="fas fa-envelope"></i> Email : saigowriprasanth@gmail.com</li>
+                    <li><i class="fas fa-map-marker-alt"></i> Address : Visakhapatnam ,Andhra Pradesh -531173</li>
+                </ul>
+                <div class="follow-us">
+                    <h3>Follow Us</h3>
+                    <ul class="social-icons">
+                        <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fab fa-facebook"></i></a></li>
+                        <li><a href="#"><i class="fab fa-youtube"></i></a></li>
+                    </ul>
+                </div>
+        </div>
+        <p class="copyright">
+            &copy; 2023 Let's Learn.
+        </p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
