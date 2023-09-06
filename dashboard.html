@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Add your meta tags, title, and CSS links here -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - E-Learning Platform</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style> 
+
+       body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #fbc37e;
+    color: #ff3434;
+    padding: 10px;
+    border-radius: 3px;
+    border-color: orangered;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dropdown-container {
+    display: flex;
+}
+
+.dropdown {
+    position: relative;
+    margin-right: 20px;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #ff6f6f;
+    min-width: 160px;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown-content ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.dropdown-content li {
+    padding: 8px 16px;
+}
+
+.dropdown-content a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.dropdown-content a:hover {
+    background-color: #9ac9fb;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.logo a {
+    font-size: 24px;
+    color: #110201;
+    text-decoration: none;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+}
+
+.search-bar input {
+    padding: 8px;
+    border: none;
+    border-radius: 4px;
+}
+
+.search-bar button {
+    padding: 8px;
+    background-color: #fe3232;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+
+.nav-links li a {
+    color: #0f0000;
+    text-decoration: none;
+}
+
+
+.nav-links ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+}
+
+.nav-links li {
+    margin-right: 20px;
+}
+
+.nav-links li a i {
+    font-size: 20px;
+}
+
+
+.nav-links li:last-child {
+    margin-right: 0;
+    margin-left: auto;
+}
+
+
+
+
+/* Main content styles */
+.dashboard {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 20px;
+  padding: 20px;
+  max-width: 2200px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color:beige;
+}
+
+/* Sidebar styles */
+.sidebar {
+  background-color: #f8f9fa;
+  padding: 10px;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar li {
+  margin-bottom: 10px;
+}
+
+.sidebar a {
+  text-decoration: none;
+  color: #333;
+  display: block;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.sidebar a:hover {
+  background-color: #007bff;
+  color: #fff;
+}
+
+/* User info and calendar styles */
+.user-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #e1eefc;
+  padding: 40px;
+  height: 500px;
+  width:auto;
+}
+
+
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.image-upload {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  background-color: #b6b9ff;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.image-preview {
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+}
+
+#preview-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+button {
+  display: block;
+  margin: 10px auto;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+
+.calendar {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  background-color: #efc8af;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.calendar-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+#calendar-table {
+  width: 100%;
+}
+
+#calendar-table th,
+#calendar-table td {
+  padding: 10px;
+  text-align: center;
+  border: 1px solid #ccc;
+}
+
+#prev-btn,
+#next-btn {
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+#prev-btn:hover,
+#next-btn:hover {
+  background-color: #f0f0f0;
+}
+
+
+
+/* Courses summary styles */
+.courses-summary {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin: auto;
+  padding: 50px;
+  justify-content: center;
+  padding-right: 50px;
+  gap: 20px;
+}
+
+.courses-summary h3 {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+  margin: 0;
+}
+
+.enrolled-courses,
+.completed-courses,
+.certificates {
+  height: 150px;
+  width:auto;
+  background-color: #aed2f7;
+  padding: 70px;
+  border-radius: 5px;
+}
+
+.footer {
+    background-color: #f0a050;
+    padding: 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 30px;
+    border-radius: 5px;
+}
+
+.footer h3 {
+    color: #030000;
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+.contact-us label {
+    font-weight: bold;
+    color: #1a0000;
+}
+
+.contact-us textarea {
+    resize: vertical;
+}
+
+.pages ul {
+    list-style: none;
+    padding: 0;
+}
+
+.pages li {
+    margin-bottom: 10px;
+}
+
+.pages a {
+    color: #000000;
+    text-decoration: none;
+}
+
+.pages a:hover {
+    text-decoration: underline;
+    color: yellow;
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.contact-icons {
+    list-style: none;
+    padding: 0;
+}
+
+.contact-icons li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.contact-icons i {
+    margin-right: 10px;
+    color: #250202;
+}
+
+.social-icons {
+    display: flex;
+    list-style: none;
+    padding: 0;
+}
+
+.social-icons li {
+    margin-right: 10px;
+}
+
+.social-icons a {
+    color: #110101;
+    font-size: 24px;
+    text-decoration: none;
+}
+
+.social-icons a:hover {
+    color: #ffd700;
+}
+
+/* Additional styles for copyright text */
+.footer .copyright {
+    text-align: center;
+    grid-column: span 3;
+    margin-top: 20px;
+    font-size: 14px;
+    color: #1e0202;
+}
+
+
+/* Media query for smaller screens */
+@media screen and (max-width: 768px) {
+    .footer {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .contact-info {
+        align-items: center;
+        margin-bottom: 20px;
+    }
+}
+
+    </style>
+</head>
+
+<body>
+
+    <header>
+
+        <nav class="navbar">
+            <div class="dropdown-container">
+                <div class="dropdown">
+                    <a href="#" class="dropbtn"><i class="fas fa-bars"></i> </a>
+                    <div class="dropdown-content">
+                        <ul>
+                            <li><a href="../categories.html">Categories</a></li>
+                            <li><a href="../dashboard.html">Dashboard</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="logo">
+                <a href="index.html">Let's Learn</a>
+            </div>
+            <div class="search-bar">
+                <input type="text" placeholder="Search...">
+                <button type="submit">Search</button>
+            </div>
+            <div class="nav-links">
+                <ul>
+                    <li><a href="login.html">Login</a></li>
+                    <li><a href="signup.html">Signup</a></li>
+                    <li><a href="profile.html" class="usericon"><i class="fas fa-user"></i> </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="dashboard">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <ul>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="#">My Courses</a></li>
+                <li><a href="#">Feedback</a></li>
+                <li><a href="profile.html">Profile</a></li>
+                <li><a href="settings.html">Settings</a></li>
+            </ul>
+        </aside>
+
+        <section class="user-info">
+            
+       
+                <div class="image-upload">
+                    <h2>Image Upload</h2>
+                    <div class="image-preview">
+                        <img id="preview-image" src="LetsLearn-logos.jpeg" alt="Preview">
+                    </div>
+                    <input type="file" id="upload-input" accept="image/*">
+                    <button id="change-btn">Change Image</button>
+                </div>
+            <p>Welcome, User Name!</p>
+        
+           
+        <div class="calendar">
+            <h1 id="month-year"></h1>
+            <div class="calendar-wrapper">
+                <div class="calendar-header">
+                    <button id="prev-btn">&lt;</button>
+                    <button id="next-btn">&gt;</button>
+                </div>
+                <table id="calendar-table">
+                    <thead>
+                        <tr>
+                            <th>Sun</th>
+                            <th>Mon</th>
+                            <th>Tue</th>
+                            <th>Wed</th>
+                            <th>Thu</th>
+                            <th>Fri</th>
+                            <th>Sat</th>
+                        </tr>
+                    </thead>
+                    <tbody id="calendar-body">
+                       
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        </section>
+
+
+        <section class="courses-summary">
+            <div class="enrolled-courses">
+                <h3>Enrolled Courses</h3>
+                
+                <p>10</p>
+            </div>
+            <div class="completed-courses">
+                <h3>Completed Courses</h3>
+                <p>5</p>
+                
+            </div>
+            <div class="certificates">
+                <h3>Certificates Earned</h3>
+                <p>5</p>
+               
+            </div>
+        </section>
+
+        
+    </main>
+
+    
+
+    <!-- Footer -->
+    <footer class="footer">
+        
+        <div class="pages">
+            <h3>Pages</h3>
+            <ul>
+                <li><a href="#">Terms and Conditions</a></li>
+                <li><a href="#">About us</a></li>
+                <li><a href="#">Categories</a></li>
+                <li><a href="#">Courses</a></li>
+                <li><a href="#">grievance</a></li>
+            </ul>
+        </div>
+        <div class="contact-info">
+            <h2>Let's Learn</h3>
+                <ul class="contact-icons">
+                    <li><i class="fas fa-phone"></i> Phone: 8309139699</li>
+                    <li><i class="fas fa-envelope"></i> Email : saigowriprasanth@gmail.com</li>
+                    <li><i class="fas fa-map-marker-alt"></i> Address : Visakhapatnam ,Andhra Pradesh -531173</li>
+                </ul>
+                <div class="follow-us">
+                    <h3>Follow Us</h3>
+                    <ul class="social-icons">
+                        <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fab fa-facebook"></i></a></li>
+                        <li><a href="#"><i class="fab fa-youtube"></i></a></li>
+                    </ul>
+                </div>
+        </div>
+        <p class="copyright">
+            &copy; 2023 Let's Learn.
+        </p>
+    </footer>
+    <script src="calscript.js"></script>
+    </body>
+
+</html>
