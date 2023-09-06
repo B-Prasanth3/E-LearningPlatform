@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Page - E-Learning Platform</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #fbc37e;
+            color: #ff3434;
+            padding: 10px;
+            border-radius: 3px;
+            border-color: orangered;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+
+        .dropdown-container {
+            display: flex;
+        }
+
+        .dropdown {
+            position: relative;
+            margin-right: 20px;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #ff6f6f;
+            min-width: 160px;
+            box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .dropdown-content li {
+            padding: 8px 16px;
+        }
+
+        .dropdown-content a {
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #9ac9fb;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* Main content styles */
+        .dashboard {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        /* Sidebar styles */
+        .sidebar {
+            background-color: #f8f9fa;
+            padding: 10px;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar li {
+            margin-bottom: 10px;
+        }
+
+        .sidebar a {
+            text-decoration: none;
+            color: #333;
+            display: block;
+            padding: 5px;
+            border-radius: 5px;
+        }
+
+        .sidebar a:hover {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        .logo a {
+            font-size: 24px;
+            color: #110201;
+            text-decoration: none;
+        }
+
+        .search-bar {
+            display: flex;
+            align-items: center;
+        }
+
+        .search-bar input {
+            padding: 8px;
+            border: none;
+            border-radius: 4px;
+        }
+
+        .search-bar button {
+            padding: 8px;
+            background-color: #fe3232;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            margin-left: 5px;
+            cursor: pointer;
+        }
+
+
+        .nav-links li a {
+            color: #0f0000;
+            text-decoration: none;
+        }
+
+
+        .nav-links ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+            align-items: center;
+        }
+
+        .nav-links li {
+            margin-right: 20px;
+        }
+
+        .nav-links li a i {
+            font-size: 20px;
+        }
+
+
+        .nav-links li:last-child {
+            margin-right: 0;
+            margin-left: auto;
+        }
+
+        body,
+        h1,
+        h2,
+        h3,
+        p,
+        ul,
+        li,
+        video {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #fecfcf;
+        }
+
+
+        main {
+            max-width: 2200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: beige;
+        }
+
+        .course-banner {
+            text-align: center;
+            margin-bottom: 20px;
+            background-color: #c9d3f9;
+            padding: 20px;
+            border-radius: 5px;
+            filter: drop-shadow(10px 10px rgb(255, 148, 109));
+        }
+
+        .course-banner h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .course-banner p {
+            color: #777;
+            font-size: 18px;
+        }
+
+        .video-section {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            border-radius: 5px;
+        }
+
+        video {
+            max-width: 1001px;
+            max-height: 500px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            filter: brightness(95%) contrast(95%) saturate(100%);
+        }
+
+        .star-ratings {
+            text-align: center;
+        }
+
+        .rating {
+            display: inline-block;
+            font-size: 30px;
+
+        }
+
+        .rating input {
+            display: none;
+        }
+
+        .rating label {
+            cursor: pointer;
+        }
+
+        .rating label:before {
+            content: "\2606";
+        }
+
+        .rating input:checked~label:before {
+            content: "\2605";
+            color: gold;
+        }
+
+        .submit-rating {
+            margin-top: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .comment-section {
+            margin-top: 30px;
+            max-width: 500px;
+            margin-left: 40px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: lightblue;
+        }
+
+        .comment-form input,
+        .comment-form textarea {
+            display: block;
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .submit-comment {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .course-nav-bar {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+            background-color: navajowhite;
+            padding: 20px;
+            border-radius: 5px;
+
+        }
+
+        .course-nav-bar ul {
+            list-style: none;
+            display: flex;
+        }
+
+        .course-nav-bar li {
+            margin-right: 20px;
+        }
+
+        .course-nav-bar a {
+            text-decoration: none;
+            color: #333;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .course-nav-bar a:hover {
+            background-color: #c9d3f9;
+            border-color: #bbb;
+            transform: scale(3.05);
+        }
+
+        .course-content,
+        .course-overview,
+        .course-notes,
+        .course-ratings,
+        .course-faqs {
+            margin-bottom: 30px;
+        }
+
+        .course-content h2,
+        .course-overview h2,
+        .course-notes h2,
+        .course-ratings h2,
+        .course-faqs h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .course-content details,
+        .course-overview p,
+        .course-notes a,
+        .course-ratings p,
+        .course-faqs details {
+            margin-left: 20px;
+            padding: 5px;
+        }
+
+        .course-content details,
+        .course-faqs details {
+            margin-left: 20px;
+            padding: 5px;
+        }
+
+        .course-content summary,
+        .course-faqs summary {
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .course-content {
+            padding: 20px;
+            border-radius: 5px;
+        }
+
+        .course-content p {
+            margin: 10px 0;
+        }
+
+        .course-content details[open] summary,
+        .course-faqs details[open] summary {
+            background-color: #f0f0f0;
+        }
+
+        .course-overview p {
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+
+
+        .course-overview {
+            background-color: navajowhite;
+            padding: 20px;
+            border-radius: 5px;
+        }
+
+        .course-notes {
+            background-color: navajowhite;
+            padding: 20px;
+            border-radius: 5px;
+        }
+
+        .course-notes a {
+            display: inline-block;
+            margin-bottom: 10px;
+            padding: 8px 15px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .course-notes a:hover {
+            background-color: #0056b3;
+        }
+
+        .course-ratings {
+            background-color: navajowhite;
+            padding: 20px;
+            border-radius: 5px;
+        }
+
+        .course-ratings p {
+            font-size: 18px;
+            color: #333;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .course-faqs {
+            background-color: navajowhite;
+            padding: 20px;
+            border-radius: 5px;
+        }
+
+        .course-faqs details {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .course-faqs summary {
+            font-weight: bold;
+        }
+
+        .footer {
+            background-color: #f0a050;
+            padding: 40px;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 30px;
+            border-radius: 5px;
+        }
+
+        .footer h3 {
+            color: #030000;
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        .contact-us label {
+            font-weight: bold;
+            color: #1a0000;
+        }
+
+        .contact-us textarea {
+            resize: vertical;
+        }
+
+        .pages ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .pages li {
+            margin-bottom: 10px;
+        }
+
+        .pages a {
+            color: #000000;
+            text-decoration: none;
+        }
+
+        .pages a:hover {
+            text-decoration: underline;
+            color: yellow;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+
+        .contact-icons {
+            list-style: none;
+            padding: 0;
+        }
+
+        .contact-icons li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+
+        .contact-icons i {
+            margin-right: 10px;
+            color: #250202;
+        }
+
+        .social-icons {
+            display: flex;
+            list-style: none;
+            padding: 0;
+        }
+
+        .social-icons li {
+            margin-right: 10px;
+        }
+
+        .social-icons a {
+            color: #110101;
+            font-size: 24px;
+            text-decoration: none;
+        }
+
+        .social-icons a:hover {
+            color: #ffd700;
+        }
+
+        /* Additional styles for copyright text */
+        .footer .copyright {
+            text-align: center;
+            grid-column: span 3;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #1e0202;
+        }
+
+        .quiz-section {
+    background-color: #f5f5f5;
+    padding: 20px;
+    border-radius: 5px;
+    margin-bottom: 30px;
+}
+
+.quiz-form {
+    margin-top: 20px;
+}
+
+.quiz-question {
+    margin-bottom: 15px;
+}
+
+.quiz-question p {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.quiz-question label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: normal;
+}
+
+.quiz-question input[type="radio"] {
+    margin-right: 5px;
+}
+
+button[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+        /* Media query for smaller screens */
+        @media screen and (max-width: 768px) {
+            .footer {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .contact-info {
+                align-items: center;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="dropdown-container">
+                <div class="dropdown">
+                    <a href="#" class="dropbtn"><i class="fas fa-bars"></i> </a>
+                    <div class="dropdown-content">
+                        <ul>
+                            <li><a href="../categories.html">Categories</a></li>
+                            <li><a href="#">Courses</a></li>
+                            <li><a href="../dashboard.html">Dashboard</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="logo">
+                <a href="index.html">Let's Learn</a>
+            </div>
+            <div class="search-bar">
+                <input type="text" placeholder="Search...">
+                <button type="submit">Search</button>
+            </div>
+            <div class="nav-links">
+                <ul>
+                    <li><a href="login.html">Login</a></li>
+                    <li><a href="signup.html">Signup</a></li>
+                    <li><a href="profile.html" class="usericon"><i class="fas fa-user"></i> </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="course-banner">
+            <h1>Digital Marketing Fundamentals</h1>
+            <p>Instructor: Digital Marketing Expert</p>
+        </section>
+    
+        <!-- Video Section -->
+        <section class="video-section">
+            <video width="800" controls>
+                <source src="icon_design_for_ui.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </section>
+    
+        <section class="star-ratings">
+            <h2>Course Ratings</h2>
+            <div class="rating">
+                <input type="radio" id="star5" name="rating" value="1">
+                <label for="star5" title="5 stars"></label>
+                <input type="radio" id="star4" name="rating" value="2">
+                <label for="star4" title="4 stars"></label>
+                <input type="radio" id="star3" name="rating" value="3">
+                <label for="star3" title="3 stars"></label>
+                <input type="radio" id="star2" name="rating" value="4">
+                <label for="star2" title="2 stars"></label>
+                <input type="radio" id="star1" name="rating" value="5">
+                <label for="star1" title="1 star"></label>
+            </div>
+            <button class="submit-rating">Submit Rating</button>
+        </section>
+        
+        
+        <section class="course-nav-bar">
+            <ul>
+                <li><a href="#course-content">Content</a></li>
+                <li><a href="#course-overview">Overview</a></li>
+                <li><a href="#course-notes">Notes</a></li>
+                <li><a href="#course-ratings">Ratings</a></li>
+                <li><a href="#course-faqs">FAQs</a></li>
+                <li><a href="#quiz-section">Quiz</a></li>
+            </ul>
+        </section>
+
+        <section class="course-content" id="course-content">
+            <h2>Course Content</h2>
+            <details>
+                <summary>Module 1: Introduction to Digital Marketing</summary>
+                <p>Video Time: (00:00:00)</p>
+                <p>Get started with an overview of digital marketing and its importance in today's business landscape.</p>
+            </details>
+            <details>
+                <summary>Module 2: Search Engine Optimization (SEO)</summary>
+                <p>Video Time: (00:12:30)</p>
+                <p>Learn the fundamentals of SEO, keyword research, and optimizing your website for better search engine
+                    rankings.</p>
+            </details>
+            <details>
+                <summary>Module 3: Social Media Marketing</summary>
+                <p>Video Time: (00:30:45)</p>
+                <p>Explore various social media platforms and discover how to create effective social media marketing
+                    strategies.</p>
+            </details>
+            <details>
+                <summary>Module 4: Email Marketing</summary>
+                <p>Video Time: (00:45:15)</p>
+                <p>Master the art of email campaigns, list building, and crafting compelling email content that converts.
+                </p>
+            </details>
+            <details>
+                <summary>Module 5: Content Marketing</summary>
+                <p>Video Time: (01:00:00)</p>
+                <p>Understand the role of content in digital marketing, and learn to create valuable content that engages
+                    your audience.</p>
+            </details>
+            <details>
+                <summary>Module 6: Pay-Per-Click Advertising (PPC)</summary>
+                <p>Video Time: (01:15:30)</p>
+                <p>Explore the world of paid advertising, including Google Ads and other PPC platforms.</p>
+            </details>
+            <details>
+                <summary>Module 7: Analytics and Data Insights</summary>
+                <p>Video Time: (01:30:45)</p>
+                <p>Learn how to analyze digital marketing performance using data and tools to make informed decisions.</p>
+            </details>
+            <details>
+                <summary>Module 8: Strategy and Campaign Planning</summary>
+                <p>Video Time: (01:45:15)</p>
+                <p>Wrap up the course by creating a comprehensive digital marketing strategy and campaign plan.</p>
+            </details>
+        </section>
+    
+        <!-- Course Overview Section -->
+        <section class="course-overview" id="course-overview">
+            <h2>Course Overview</h2>
+            <p>
+                Dive into the dynamic world of digital marketing with our comprehensive course on Digital Marketing
+                Fundamentals. Whether you're a business owner looking to expand your online presence or an aspiring
+                marketer seeking to enhance your skillset, this course provides an essential foundation for success.
+                Discover the strategies and techniques used by industry professionals to reach and engage your target
+                audience effectively.
+            </p>
+            <p>
+                Through a series of engaging video lessons, you'll explore key topics such as search engine optimization
+                (SEO), social media marketing, email campaigns, content creation, and more. Learn how to leverage digital
+                channels to boost brand visibility, drive traffic, and convert leads into loyal customers. Our expert
+                instructor, a seasoned digital marketer, will guide you through real-world examples and case studies,
+                ensuring you gain practical insights that can be applied immediately.
+            </p>
+            <p>
+                Whether you're new to the world of digital marketing or seeking to enhance your existing skills, this
+                course equips you with the knowledge and confidence to navigate the rapidly evolving landscape of online
+                marketing. Join us on this exciting journey to become a proficient digital marketer and stay ahead in the
+                digital age.
+            </p>
+        </section>
+    
+        <!-- Course Notes Section -->
+        <section class="course-notes" id="course-notes">
+            <h2>Course Notes</h2>
+            <a href="link-to-course-notes.pdf" target="_blank">Course Notes PDF</a>
+        </section>
+    
+        <!-- Course FAQs Section -->
+        <section class="course-faqs" id="course-faqs">
+            <h2>Frequently Asked Questions</h2>
+            <details>
+                <summary>Is this course suitable for beginners?</summary>
+                <p>Yes, this course is designed for beginners with little to no prior knowledge of digital marketing.</p>
+            </details>
+            <details>
+                <summary>What are the prerequisites for this course?</summary>
+                <p>No specific prerequisites are required. A basic understanding of the internet and business concepts is
+                    helpful.</p>
+            </details>
+            <details>
+                <summary>Will I learn about paid advertising?</summary>
+                <p>Yes, the course covers pay-per-click advertising (PPC) and its role in digital marketing strategies.</p>
+            </details>
+            <details>
+                <summary>How will I receive the course materials?</summary>
+                <p>Course materials, including video lessons and downloadable resources, will be accessible on our online
+                    learning platform.</p>
+            </details>
+        </section>
+
+        <!-- Quiz Section: Add this code after the content sections -->
+        <section id="quiz-section" class="quiz-section">
+            <h2>Quiz</h2>
+            <form class="quiz-form" action="#">
+                <div class="quiz-question">
+                    <p>Question 1: What is the primary goal of digital marketing?</p>
+                    <label>
+                        <input type="radio" name="q1" value="a"> A. Increasing paper-based advertising
+                    </label>
+                    <label>
+                        <input type="radio" name="q1" value="b"> B. Enhancing offline marketing efforts
+                    </label>
+                    <label>
+                        <input type="radio" name="q1" value="c"> C. Building brand awareness and driving conversions online
+                    </label>
+                    <label>
+                        <input type="radio" name="q1" value="d"> D. Reducing the need for traditional marketing
+                    </label>
+                </div>
+                <div class="quiz-question">
+                    <p>Question 2: Which of the following is an example of owned media?</p>
+                    <label>
+                        <input type="radio" name="q2" value="a"> A. Social media ads
+                    </label>
+                    <label>
+                        <input type="radio" name="q2" value="b"> B. Influencer partnerships
+                    </label>
+                    <label>
+                        <input type="radio" name="q2" value="c"> C. Banner ads on a third-party website
+                    </label>
+                    <label>
+                        <input type="radio" name="q2" value="d"> D. Your company's website
+                    </label>
+                </div>
+                <div class="quiz-question">
+                    <p>Question 3: What is SEO an acronym for?</p>
+                    <label>
+                        <input type="radio" name="q3" value="a"> A. Social Engagement Outreach
+                    </label>
+                    <label>
+                        <input type="radio" name="q3" value="b"> B. Search Engine Optimization
+                    </label>
+                    <label>
+                        <input type="radio" name="q3" value="c"> C. Sponsored Email Offers
+                    </label>
+                    <label>
+                        <input type="radio" name="q3" value="d"> D. Strategic Event Outreach
+                    </label>
+                </div>
+                <div class="quiz-question">
+                    <p>Question 4: What does the "CPC" abbreviation stand for in online advertising?</p>
+                    <label>
+                        <input type="radio" name="q4" value="a"> A. Cost Per Click
+                    </label>
+                    <label>
+                        <input type="radio" name="q4" value="b"> B. Click-Through Rate
+                    </label>
+                    <label>
+                        <input type="radio" name="q4" value="c"> C. Conversion Probability Coefficient
+                    </label>
+                    <label>
+                        <input type="radio" name="q4" value="d"> D. Clickable Page Content
+                    </label>
+                </div>
+                <div class="quiz-question">
+                    <p>Question 5: What is the main purpose of a landing page in digital marketing?</p>
+                    <label>
+                        <input type="radio" name="q5" value="a"> A. To display a list of products for sale
+                    </label>
+                    <label>
+                        <input type="radio" name="q5" value="b"> B. To showcase the company's history
+                    </label>
+                    <label>
+                        <input type="radio" name="q5" value="c"> C. To provide contact information for the business
+                    </label>
+                    <label>
+                        <input type="radio" name="q5" value="d"> D. To capture user information and encourage actions
+                    </label>
+                </div>
+                <button type="submit">Submit Answers</button>
+            </form>
+        </section>
+
+
+        <section class="comment-section">
+            <h2>Comments</h2>
+            <div class="comment-form">
+                <input type="text" placeholder="Name">
+                <textarea placeholder="Your comment"></textarea>
+                <button class="submit-comment">Submit Comment</button>
+            </div>
+            <div class="comments-list">
+            </div>
+        </section>
+
+    
+    </main>
+
+    <footer class="footer">
+
+        <div class="pages">
+            <h3>Pages</h3>
+            <ul>
+                <li><a href="#">Terms and Conditions</a></li>
+                <li><a href="#">About us</a></li>
+                <li><a href="#">Categories</a></li>
+                <li><a href="#">Courses</a></li>
+                <li><a href="#">grievance</a></li>
+            </ul>
+        </div>
+        <div class="contact-info">
+            <h2>Let's Learn</h3>
+                <ul class="contact-icons">
+                    <li><i class="fas fa-phone"></i> Phone: 8309139699</li>
+                    <li><i class="fas fa-envelope"></i> Email : saigowriprasanth@gmail.com</li>
+                    <li><i class="fas fa-map-marker-alt"></i> Address : Visakhapatnam ,Andhra Pradesh -531173</li>
+                </ul>
+                <div class="follow-us">
+                    <h3>Follow Us</h3>
+                    <ul class="social-icons">
+                        <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fab fa-facebook"></i></a></li>
+                        <li><a href="#"><i class="fab fa-youtube"></i></a></li>
+                    </ul>
+                </div>
+        </div>
+        <p class="copyright">
+            &copy; 2023 Let's Learn.
+        </p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

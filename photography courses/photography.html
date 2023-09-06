@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photography and Photo-Editing Courses</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: rgb(254, 240, 224);
+        }
+
+        header {
+            background-color: #fbc37e;
+            color: #ff3434;
+            padding: 10px;
+            border-radius: 3px;
+            border-color: orangered;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .dropdown-container {
+            display: flex;
+        }
+
+        .dropdown {
+            position: relative;
+            margin-right: 20px;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #ff6f6f;
+            min-width: 160px;
+            box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .dropdown-content li {
+            padding: 8px 16px;
+        }
+
+        .dropdown-content a {
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #9ac9fb;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .logo a {
+            font-size: 24px;
+            color: #110201;
+            text-decoration: none;
+        }
+
+        .search-bar {
+            display: flex;
+            align-items: center;
+        }
+
+        .search-bar input {
+            padding: 8px;
+            border: none;
+            border-radius: 4px;
+        }
+
+        .search-bar button {
+            padding: 8px;
+            background-color: #fe3232;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            margin-left: 5px;
+            cursor: pointer;
+        }
+
+
+        .nav-links li a {
+            color: #0f0000;
+            text-decoration: none;
+        }
+
+
+        .nav-links ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+            align-items: center;
+        }
+
+        .nav-links li {
+            margin-right: 20px;
+        }
+
+
+        .nav-links li a i {
+            font-size: 20px;
+        }
+
+
+        .nav-links li:last-child {
+            margin-right: 0;
+            margin-left: auto;
+        }
+
+
+
+        .main {
+            padding: 20px;
+        }
+
+        .category-page {
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        .courses-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .course {
+            width: 300px;
+            background-color: #ffffff;
+            padding: 20px;
+            margin: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            text-align: left;
+        }
+
+        .course h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .course p {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .course a {
+            display: block;
+            background-color: #007bff;
+            color: #fff;
+            text-align: center;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+
+        .course a:hover {
+            background-color: #0056b3;
+        }
+
+        .footer {
+            background-color: #EEA47F;
+            padding: 40px;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 30px;
+        }
+
+        .contact-us form {
+            display: grid;
+            gap: 10px;
+        }
+
+        .contact-us label {
+            font-weight: bold;
+        }
+
+        .contact-us textarea {
+            resize: vertical;
+        }
+
+        .pages ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .pages li {
+            margin-bottom: 10px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+
+        .contact-icons {
+            list-style: none;
+            padding: 0;
+        }
+
+        .contact-icons li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+
+        .contact-icons i {
+            margin-right: 10px;
+        }
+
+        .social-icons {
+            display: flex;
+            list-style: none;
+            padding: 0;
+        }
+
+        .social-icons li {
+            margin-right: 10px;
+        }
+
+        .social-icons a {
+            color: #333;
+            font-size: 24px;
+        }
+
+        .footer .copyright {
+            text-align: center;
+            grid-column: span 3;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #888;
+        }
+
+
+
+        @media screen and (max-width: 768px) {
+            .footer {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .contact-info {
+                align-items: center;
+                margin-bottom: 20px;
+            }
+        }
+
+
+        .footer h3 {
+            color: #0e0000;
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        .pages a:hover {
+            text-decoration: underline;
+            color: yellow;
+        }
+
+
+        .social-icons a:hover {
+            color: yellow;
+        }
+
+        .footer .copyright {
+            text-align: center;
+            grid-column: span 3;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #0e0101;
+
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+
+            <div class="dropdown-container">
+                <div class="dropdown">
+                    <a href="#" class="dropbtn"><i class="fas fa-bars"></i> </a>
+                    <div class="dropdown-content">
+                        <ul>
+                            <li><a href="../categories.html">Categories</a></li>
+                            <li><a href="#">Courses</a></li>
+                            <li><a href="../dashboard.html">Dashboard</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="logo">
+                <a href="index.html">Let's Learn</a>
+            </div>
+            <div class="search-bar">
+                <input type="text" placeholder="Search...">
+                <button type="submit">Search</button>
+            </div>
+            <div class="nav-links">
+                <ul>
+                    <li><a href="login.html">Login</a></li>
+                    <li><a href="signup.html">Signup</a></li>
+                    <li><a href="profile.html" class="usericon"><i class="fas fa-user"></i> </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+
+    <main class="category-page">
+        <h1>Photography and Photo-Editing Courses</h1>
+        <div class="courses-container">
+            <div class="course">
+                <img src="photography.png" alt="Course 3" style="width: 70px; height: 50px;">
+                <h2>Introduction to Photography</h2>
+                <p>Course Description Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <a href="photographyintro.html">Enroll Now</a>
+            </div>
+            <div class="course">
+                <img src="gallery.png" alt="Course 3" style="width: 70px; height: 50px;">
+                <h2>Landscape & Portrait Photography</h2>
+                <p>Course Description Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <a href="landscapephotography.html">Enroll Now</a>
+            </div>
+            <div class="course">
+                <img src="compose.png" alt="Course 3" style="width: 70px; height: 50px;">
+                <h2>Photo Composition and Framing</h2>
+                <p>Course Description Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <a href="Photocomposition.html">Enroll Now</a>
+            </div>
+            <div class="course">
+                <img src="dslr-camera.png" alt="Course 3" style="width: 70px; height: 50px;">
+                <h2>DSLR Camera Basics</h2>
+                <p>Course Description Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <a href="dslrcamera.html">Enroll Now</a>
+            </div>
+            <div class="course">
+                <img src="photoshop-lightroom.png" alt="Course 3" style="width: 70px; height: 50px;">
+                <h2>Adobe Lightroom Essentials</h2>
+                <p>Course Description Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <a href="adobelightroom.html">Enroll Now</a>
+            </div>
+
+
+            <!-- Add icons and courses as needed -->
+        </div>
+    </main>
+
+    <footer class="footer">
+
+        <div class="pages">
+            <h3>Pages</h3>
+            <ul>
+                <li><a href="#">Terms and Conditions</a></li>
+                <li><a href="#">About us</a></li>
+                <li><a href="#">Categories</a></li>
+                <li><a href="#">Courses</a></li>
+                <li><a href="#">grievance</a></li>
+            </ul>
+        </div>
+        <div class="contact-info">
+            <h2>Let's Learn</h3>
+                <ul class="contact-icons">
+                    <li><i class="fas fa-phone"></i> Phone: 8309139699</li>
+                    <li><i class="fas fa-envelope"></i> Email : saigowriprasanth@gmail.com</li>
+                    <li><i class="fas fa-map-marker-alt"></i> Address : Visakhapatnam ,Andhra Pradesh -531173</li>
+                </ul>
+                <div class="follow-us">
+                    <h3>Follow Us</h3>
+                    <ul class="social-icons">
+                        <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fab fa-facebook"></i></a></li>
+                        <li><a href="#"><i class="fab fa-youtube"></i></a></li>
+                    </ul>
+                </div>
+        </div>
+        <p class="copyright">
+            &copy; 2023 Let's Learn.
+        </p>
+
+    </footer>
+    <script>
+        function navigateToCourse(course) {
+            // Replace this line with the actual navigation logic to the respective course page.
+            // For this example, we'll simulate navigation by redirecting to a course.html page with the selected course as a query parameter.
+            const courseUrl = `course.html?course=${encodeURIComponent(course)}`;
+            window.location.href = courseUrl;
+        }
+    </script>
+</body>
+
+</html>
